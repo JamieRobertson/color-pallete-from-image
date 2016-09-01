@@ -1,0 +1,8 @@
+TODO:
+Try removing colors that have only 1 pixel ?
+Lighten the colors a bit so that they are more pastelly
+What if the predominant color is grey with no interesting colors ? - use random interesting color ?
+Any range of colors to completely avoid?
+When brightness is increased it could end up in a very grey tone - maybe limit how grey it can be ?
+Maybe in the end - let developers choose their own colors - just start with these ones on release
+PIL.ImageEnhance = brighten image
