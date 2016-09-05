@@ -10,33 +10,61 @@
 		*, :after, :before {
     		box-sizing: border-box;
 		}
-		a.img-wrapper {
+		a.product-block {
 			display: inline-block;
+			float: left;
 			width: 100%;
 			max-width: 260px;
 			height: 150px;
-			padding: 15px;
+			padding: 10px;
 			margin: 10px;
-			/*filter: brightness(25%);
-			-webkit-filter: brightness(25%);*/
+			overflow-y: hidden;
 		}
-		a.img-wrapper > div {
+		
+		/* Vertical align images */
+		a.product-block > div.img-wrapper {
+			display: table;
 			height: 100%;
-			background-repeat: no-repeat;
-			background-size: contain;
-			background-position: center;
-			filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.3));
-			-webkit-filter: drop-shadow(0px 0px 1px rgba(0,0,0,0.3))
 		}
+		a.product-block > div.img-wrapper > div {
+			display: table-cell;
+			vertical-align: middle;
+		}
+		/* / Vertical align images */
+
+		a.product-block img {
+			width: 100%;
+			box-shadow: 0px 0px 1px 1px rgba(28, 25, 43, 0.3);
+		}
+		img.lazy {
+			transition: opacity .4s linear;
+			opacity: 0;
+		}
+	    img.lazy.b-loaded {
+			opacity: 1;
+	    }
 	</style>
 </head>
 <body>
 
 	{% for item in content %}
-			<a href="#" class="img-wrapper" style="background-color: rgb{{ item.bg }};">
-				<div style="background-image: url('{{ item.img }}');"></div>
-			</a>	
+		<a href="#" class="product-block" style="background-color: rgb{{ item.bg }};">
+			<div class="img-wrapper"><div>
+				<img class="lazy" src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== data-src="{{ item.img }}" alt="Product name">
+				<noscript><img src="{{ item.img }}" alt="Product name"></noscript>
+			</div></div>
+		</a>
 	{% endfor %}
+
+	<script src="//cdn.jsdelivr.net/blazy/latest/blazy.min.js"></script>
+	<script>
+        ;(function() {
+            // Initialize Blazy
+            var bLazy = new Blazy({
+            	selector: 'img.lazy'
+            });
+        })();
+    </script>
 
 </body>
 </html>
