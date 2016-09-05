@@ -3,7 +3,10 @@ Color palette from image
 These are some experiments to find an appropriate pastel color from an image.  
 
 This app uses [Pillow](https://python-pillow.org/) - a fork from PIL (Python Imaging Library).  
+
 This app also uses [Flask](http://flask.pocoo.org/) to preview the images + background colors.  
+
+[Blazy](https://github.com/dinbror/blazy) is used to lazyload images. It does not require jQuery.  
 
 
 ### How to install
